@@ -10,4 +10,5 @@
   :uberjar-name "target/drainbot.jar"
   :main ^:skip-aot drain.bot
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  :min-lein-version "2.5.0")
