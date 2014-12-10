@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/drainbot.jar
+web: java $JAVA_OPTS -cp target/drainbot.jar clojure.main -m drain.bot

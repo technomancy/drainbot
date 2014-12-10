@@ -7,8 +7,6 @@
                  [ring/ring-core "1.2.1"]
                  [ring/ring-jetty-adapter "1.2.0"]
                  [irclj "0.5.0-alpha4"]]
-  :uberjar-name "target/drainbot.jar"
-  :main ^:skip-aot drain.bot
-  :target-path "target/%s"
+  :uberjar-name "drainbot.jar"
   :profiles {:uberjar {:aot :all}}
   :min-lein-version "2.5.0")
