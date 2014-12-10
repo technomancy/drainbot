@@ -36,7 +36,7 @@
          :body (.getMessage e)}))
     {:status 200
      :headers {"Content-Type" "text/plain"}
-     :body "This is drainbot."}))
+     :body "heroku drains:add https://drainbot.herokuapp.com/mychannel -a myapp"}))
 
 (defn -main []
   (let [port (Integer. (or (System/getenv "PORT") 5000))
