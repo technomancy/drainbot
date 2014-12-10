@@ -10,15 +10,15 @@
     (do (irc/join irc (str "#" channel))
         (conj joined-channels channel))))
 
+(defn trim [s] (string/join " " (drop 7 (string/split s #" "))))
+
 (defn parse [{:keys [uri body]} irc channels]
   (if-let [channel (second (re-find #"^/([^/]+)" uri))]
     (let [pattern (re-pattern (or (re-find #"^/[^/]+/([^/]+)" uri) "."))]
       (swap! channels join channel irc)
-      [(str "#" channel) (->> (io/reader body)
-                              (line-seq)
-                              (map (fn [s] (last (string/split s #"- - "))))
+      [(str "#" channel) (->> (line-seq (io/reader body))
                               (filter (partial re-find pattern))
-                              (apply str))])
+                              (map trim) (apply str))])
     (throw (ex-info "channel not found" {:status 404}))))
 
 (defn app [irc channels req]
